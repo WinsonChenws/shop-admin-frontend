@@ -10,8 +10,11 @@ import "element-ui/lib/theme-chalk/index.css";
 
 import VueRouter from "vue-router";
 
-import Login from "./pages/Login.vue";
-import Admin from "./pages/Admin.vue";
+//组件们
+import Login from "./pages/Login";
+import Admin from "./pages/Admin";
+import GoodsList from "./pages/goods/GoodsList";
+import CategoryList from "./pages/category/CategoryList";
 //注册插件
 Vue.use(ElementUI);
 Vue.use(VueRouter);
@@ -19,9 +22,18 @@ Vue.use(VueRouter);
 Vue.config.productionTip = false
 
 const routes = [
-    { path: '/', redirect: "/admin" },
-    { path: "/login", component: Login, meta: "登陆页" },
-    { path: "/admin", component: Admin, meta: "管理" }
+    { path: "/", redirect: "/admin" },
+    { path: "/login", component: Login, meta: "登录页" },
+    {
+        path: "/admin",
+        component: Admin,
+        meta: "首页",
+        redirect: "/admin/goods-list",
+        children: [
+            { path: "goods-list", component: GoodsList, meta: "商品列表" },
+            { path: "category-list", component: CategoryList, meta: "栏目列表" }
+        ]
+    }
 ]
 
 const router = new VueRouter({ routes })
