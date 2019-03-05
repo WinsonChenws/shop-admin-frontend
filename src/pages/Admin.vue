@@ -13,6 +13,7 @@
         </el-header>
         <!-- 主体 -->
         <el-main>
+            <app-breadcrumb></app-breadcrumb>
             <router-view></router-view>
         </el-main>
       </el-container>
@@ -23,6 +24,8 @@
 <script>
 import Aside from "../components/Aside";
 import Header from "../components/Header.vue";
+import Breadcrumb from "../components/Breadcrumb.vue";
+
 export default {
     name:'admin-index',
     data:function () {
@@ -32,7 +35,8 @@ export default {
     },
     components: {
         'app-aside':Aside,
-        'app-header':Header
+        'app-header':Header,
+        'app-breadcrumb':Breadcrumb
     },
     methods: {
         // 修改取反
@@ -60,12 +64,9 @@ export default {
     flex-direction: column;
 
 }
-
+/* 去除默认样式 */
 .el-main {
-  background-color: #e9eef3;
-  color: #333;
-  text-align: center;
-  line-height: 160px;
+ background-color: #ccc;
 }
 
 .el-container {

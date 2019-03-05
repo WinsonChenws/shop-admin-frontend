@@ -27,7 +27,7 @@ const routes = [
     {
         path: "/admin",
         component: Admin,
-        meta: "首页",
+        meta: "后台管理",
         redirect: "/admin/goods-list",
         children: [
             { path: "goods-list", component: GoodsList, meta: "商品列表" },
